@@ -165,11 +165,10 @@ ORDER BY 2 DESC;
 -- Continents with the highest infection count
 
 SELECT
-	continent, 
+	location, 
 	MAX(CAST(total_cases AS int)) AS max_inffection_count
 FROM covid_deaths
-WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
-"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+WHERE LOWER(location) IN ("world", "asia", "africa", "south africa", "europe", "north america",
 "european union", "south america", "oceania")
 GROUP BY 1
 ORDER BY 2 DESC;
@@ -177,11 +176,24 @@ ORDER BY 2 DESC;
 -- Continents with the highest death count
 
 SELECT
-	continent, 
+	location, 
 	MAX(CAST(total_deaths AS int)) AS max_death_count 
 FROM covid_deaths
+WHERE LOWER(location) IN ("world", "asia", "africa", "south africa", "europe", "north america",
+"european union", "south america", "oceania")
+GROUP BY 1
+ORDER BY 2 DESC;
+
+-- Global numbers
+
+SELECT 
+	date,
+	SUM(new_cases) AS new_cases,
+	SUM(new_deaths) AS new_deaths,
+	ROUND(SUM(new_deaths)/SUM(new_cases)*100, 2) AS death_percentage
+FROM covid_deaths 
 WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
 "upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
 "european union", "south america", "oceania")
 GROUP BY 1
-ORDER BY 2 DESC;
+ORDER BY 1; 
