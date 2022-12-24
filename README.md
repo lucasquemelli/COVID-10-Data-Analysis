@@ -4,7 +4,7 @@
 
 # Project Description
 
-This is a data analysis project in order to explore COVID-19 world data and create a dashboard. 
+This is a data analysis project in order to explore COVID-19 world data using SQL and create a dashboard using Tableau. 
 
 The dataset used in this project contains COVID-19 world data in the period between Jan 2020 and Dec 2022. It is available on [Our World in Data - Coronavirus (COVID-19) Deaths](https://ourworldindata.org/covid-deaths).
 
