@@ -20,5 +20,7 @@ The steps to create a database were:
 
 We may find the [Data Exploration file](https://github.com/lucasquemelli/COVID-19_Data-Analysis/blob/main/covid_data_exploring.sql) by clicking on this hyper link. 
 
+In this section, we performed the data exploration using SQLite. The skills used in this task were: Joins, CTE's, Subqueries, Temp Tables, Window Functions, Aggregate Functions, Creating Views, and Converting/Casting Data Types.
+
 # 3. Data Visualization 
 
