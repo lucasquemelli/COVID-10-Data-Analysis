@@ -112,17 +112,43 @@ WHERE date = "2022-12-22" -- The most updated date of the dataset
 GROUP BY 1,2,3
 ORDER BY 4 DESC;
 
+-- Countries with the highest infection count
+
+SELECT
+	location, 
+	MAX(CAST(total_cases AS int)) AS max_inffection_count, 
+	ROUND((CAST(total_cases AS int)/population)*100, 5) AS infection_rate
+FROM covid_deaths
+WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+GROUP BY 1
+ORDER BY 2 DESC;
+
 -- Countries with the highest death rates compared to population 
 
 SELECT
 	location, 
 	total_deaths, 
 	population,
-	ROUND((total_deaths/population)*100, 5) AS death_rate
+	ROUND(total_deaths/population)*100, 5) AS death_rate
 FROM covid_deaths
 WHERE date = "2022-12-22" -- The most updated date of the dataset
 GROUP BY 1,2,3
 ORDER BY 4 DESC;
+
+-- Countries with the highest death count
+
+SELECT
+	location, 
+	MAX(CAST(total_deaths AS int)) AS max_death_count, 
+	ROUND((CAST(total_deaths AS int)/population)*100, 5) AS death_rate
+FROM covid_deaths
+WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+GROUP BY 1
+ORDER BY 2 DESC;
 
 -- The most populated countries in 2022-12-22
 
@@ -132,7 +158,30 @@ SELECT
 FROM covid_deaths
 WHERE date = "2022-12-22" -- The most updated date of the dataset
 AND LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
-"upper middle income", "africa", "high income", "low income", "europe", "north america",
-"european union", "south america")
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
 ORDER BY 2 DESC;
 
+-- Continents with the highest infection count
+
+SELECT
+	continent, 
+	MAX(CAST(total_cases AS int)) AS max_inffection_count
+FROM covid_deaths
+WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+GROUP BY 1
+ORDER BY 2 DESC;
+
+-- Continents with the highest death count
+
+SELECT
+	continent, 
+	MAX(CAST(total_deaths AS int)) AS max_death_count 
+FROM covid_deaths
+WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+GROUP BY 1
+ORDER BY 2 DESC;
