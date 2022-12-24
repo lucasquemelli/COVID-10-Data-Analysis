@@ -70,18 +70,32 @@ GROUP BY 1,2,3,4,5,6
 ORDER BY 1,2;
 
 -- Total cases vs total deaths in Brazil
+-- It shows the likelihood of dying in Brazil if you get Covid-19
+-- It shows the percentage of the entire population in Brazil who died for Covid-19
 
 SELECT
 	location, 
 	date, 
-	total_cases, 
-	new_cases, 
+	total_cases,  
 	total_deaths, 
 	population,
 	ROUND((total_deaths/total_cases)*100, 2) AS percentage_death_case,
 	ROUND((total_deaths/population)*100, 5) AS percentage_death_population
 FROM covid_deaths
 WHERE LOWER(location) = "brazil"
-GROUP BY 1,2,3,4,5,6
+GROUP BY 1,2,3,4,5
 ORDER BY 1,2;
 
+-- Total cases vs population
+-- It shows the percentage of population who has gotten Covid-19
+
+SELECT
+	location, 
+	date, 
+	total_cases, 
+	population,
+	ROUND((total_cases/population)*100, 5) AS percentage_cases_population
+FROM covid_deaths
+WHERE LOWER(location) = "brazil"
+GROUP BY 1,2,3,4
+ORDER BY 1,2;
