@@ -20,4 +20,3 @@ The steps to create a database were:
 
 # 3. Data Visualization 
 
-<img width="283" alt="image" src="https://user-images.githubusercontent.com/81119854/209418008-e26f3959-2e1e-48a7-ae22-265aa81577e1.png">
