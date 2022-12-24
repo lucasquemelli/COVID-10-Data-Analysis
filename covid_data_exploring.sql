@@ -1,6 +1,6 @@
 /*
 Covid-19 Data Exploration 
-Skills used: Joins, CTE's, Temp Tables, Window Functions, Aggregate Functions, Creating Views, Converting/Casting Data Types
+Skills used: Joins, CTE's, Subqueries, Temp Tables, Window Functions, Aggregate Functions, Creating Views, Converting/Casting Data Types
 */
 
 
@@ -197,3 +197,94 @@ WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle in
 "european union", "south america", "oceania")
 GROUP BY 1
 ORDER BY 1; 
+
+-- Death percentage globally until 2022-12-22
+
+SELECT 
+	SUM(new_cases) AS new_cases,
+	SUM(new_deaths) AS new_deaths,
+	ROUND(SUM(new_deaths)/SUM(new_cases)*100, 2) AS death_percentage
+FROM covid_deaths 
+WHERE LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+ORDER BY 1; 
+
+-- Total population vs total vaccinations 
+
+SELECT 
+	cd.continent, 
+	cd.location, 
+	cd.date, 
+	cd.population,
+	cv.new_vaccinations,
+	SUM(cv.new_vaccinations) OVER (PARTITION BY cd.location ORDER BY cd.location, cd.date) AS accumulated_vaccinations,
+	((SUM(cv.new_vaccinations) OVER (PARTITION BY cd.location ORDER BY cd.location, cd.date))/cd.population)*100 AS percentage_vaccinated,
+	SUM(cv.new_vaccinations) OVER (PARTITION BY cd.location) AS total_vaccinations_per_country
+FROM covid_deaths cd 
+JOIN covid_vaccinations cv ON LOWER(cd.location) = LOWER(cv.location)
+						  AND cd.date = cv.date 
+WHERE LOWER(cd.location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+ORDER BY 2,3
+
+-- Using CTE 
+
+WITH PopsVac (continent, location, date, population, new_vaccinations, accumulated_vaccinations) AS (
+
+SELECT 
+	cd.continent, 
+	cd.location, 
+	cd.date, 
+	cd.population,
+	cv.new_vaccinations,
+	SUM(cv.new_vaccinations) OVER (PARTITION BY cd.location ORDER BY cd.location, cd.date) AS accumulated_vaccinations
+FROM covid_deaths cd 
+JOIN covid_vaccinations cv ON LOWER(cd.location) = LOWER(cv.location)
+						  AND cd.date = cv.date 
+WHERE LOWER(cd.location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+"european union", "south america", "oceania")
+ORDER BY 2,3
+)
+SELECT 
+*
+FROM PopsVac
+
+-- Using subquery
+
+WITH vaccinations_data AS (
+
+	SELECT 
+		cd.continent, 
+		cd.location, 
+		cd.date, 
+		cd.population,
+		cv.new_vaccinations,
+		SUM(cv.new_vaccinations) OVER (PARTITION BY cd.location ORDER BY cd.location, cd.date) AS accumulated_vaccinations
+	FROM covid_deaths cd 
+	JOIN covid_vaccinations cv ON LOWER(cd.location) = LOWER(cv.location)
+							  AND cd.date = cv.date 
+	WHERE LOWER(cd.location) NOT IN ("international", "world", "asia", "lower middle income", 
+	"upper middle income", "africa", "south africa", "high income", "low income", "europe", "north america",
+	"european union", "south america", "oceania")
+	ORDER BY 2,3
+	
+), percentage_vaccinated AS (
+
+	SELECT 
+		continent, 
+		location,
+		date,
+		population,
+		new_vaccinations,
+		accumulated_vaccinations,
+		(accumulated_vaccinations/population)*100 AS percent_vaccinated
+	FROM vaccinations_data 
+	
+)
+
+SELECT
+*
+FROM percentage_vaccinated
