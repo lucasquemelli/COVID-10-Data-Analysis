@@ -17,7 +17,24 @@ FROM covid_vaccinations
 ORDER BY 3,4;
 
 
---
+-- Checking if everything is ok with continent field
+
+SELECT DISTINCT 
+	continent 
+FROM covid_deaths; 
+	
+
+-- Checking NULL values for continent
+-- Based on this query, we should discard values where continent is null
+
+SELECT DISTINCT 
+	continent,
+	location 
+FROM covid_deaths 
+WHERE (continent IS NULL OR continent = "");
+
+
+-- Selecting data we are going to work with
 
 SELECT
 	location, 
@@ -27,4 +44,4 @@ SELECT
 	total_deaths, 
 	population
 FROM covid_deaths
-WHERE (continent IS NOT NULL OR continent != "")
+WHERE (continent IS NOT NULL OR continent != "");
