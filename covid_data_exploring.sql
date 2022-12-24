@@ -99,3 +99,40 @@ FROM covid_deaths
 WHERE LOWER(location) = "brazil"
 GROUP BY 1,2,3,4
 ORDER BY 1,2;
+
+-- Countries with the highest infection rates compared to population 
+
+SELECT
+	location, 
+	total_cases, 
+	population,
+	ROUND((total_cases/population)*100, 5) AS infection_rate
+FROM covid_deaths
+WHERE date = "2022-12-22" -- The most updated date of the dataset
+GROUP BY 1,2,3
+ORDER BY 4 DESC;
+
+-- Countries with the highest death rates compared to population 
+
+SELECT
+	location, 
+	total_deaths, 
+	population,
+	ROUND((total_deaths/population)*100, 5) AS death_rate
+FROM covid_deaths
+WHERE date = "2022-12-22" -- The most updated date of the dataset
+GROUP BY 1,2,3
+ORDER BY 4 DESC;
+
+-- The most populated countries in 2022-12-22
+
+SELECT
+	location,  
+	population
+FROM covid_deaths
+WHERE date = "2022-12-22" -- The most updated date of the dataset
+AND LOWER(location) NOT IN ("international", "world", "asia", "lower middle income", 
+"upper middle income", "africa", "high income", "low income", "europe", "north america",
+"european union", "south america")
+ORDER BY 2 DESC;
+
