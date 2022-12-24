@@ -18,5 +18,7 @@ The steps to create a database were:
 
 # 2. Data Exploration 
 
+We may find the [Data Exploration file](https://github.com/lucasquemelli/COVID-19_Data-Analysis/blob/main/covid_data_exploring.sql) by clicking on this hyper link. 
+
 # 3. Data Visualization 
 
