@@ -22,7 +22,7 @@ We may find the [Data Exploration file](https://github.com/lucasquemelli/COVID-1
 
 In this section, we performed the data exploration using SQLite. The skills used in this task were: Joins, CTE's, Subqueries, Temp Tables, Window Functions, Aggregate Functions, Views, and Converting/Casting Data Types.
 
-All data generated were inserted into multiple views. 
+All data generated were inserted into multiple views. All views created and used to visualize data on Tableau may be find on [Views Folder](https://github.com/lucasquemelli/COVID-19_Data-Analysis/tree/main/Views).
 
 # 3. Data Visualization 
 
