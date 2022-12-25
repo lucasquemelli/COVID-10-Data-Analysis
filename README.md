@@ -28,5 +28,7 @@ All data generated were used to create multiple views. All views were exported t
 
 # 3. Data Visualization 
 
-- Data type change.
+- Data type change. We had to change data type of some columns that was string into numeric type. We made the change in the visualization window on Tableu, because in the datasource window if we tried to change the type some rows could become null.
+
+
 - Null treatment. 
