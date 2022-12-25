@@ -12,7 +12,7 @@ The dataset used in this project contains COVID-19 world data in the period betw
 
 The steps to create a database were:
 
-1. Firstly, we created two tables from the dataset downloaded: (1) Covid Deaths and (2) Covid Vaccinations. 
+1. Firstly, we created two tables from the dataset downloaded: **(1)** Covid Deaths and **(2)** Covid Vaccinations. 
 2. Then we used DBeaver as a database manager. Thus we created a connection with SQLite and a database. 
 3. Finally, we imported the csv files to the SQLite database. 
 
