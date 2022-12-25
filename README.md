@@ -14,9 +14,9 @@ The steps to create a database were:
 
 **1.** Firstly, we created two tables from the dataset downloaded: **(1)** Covid Deaths and **(2)** Covid Vaccinations. The size of these datasets are too big to upload them on GitHub. Yet, in the next section we created views from them and the views may be found in this project. 
 
-**2.** Then, we used DBeaver as a database manager. Thus we created a connection with SQLite and created a database. 
+**2.** Then, we used DBeaver as a database manager. Subsequently, we created a connection with SQLite to create the database. 
 
-**3.** Finally, we imported the csv files to the SQLite database. 
+**3.** Finally, we imported csv files from the data generated in the SQLite database to use them on Tableau Public as datasource. 
 
 # 2. Data Exploration 
 
