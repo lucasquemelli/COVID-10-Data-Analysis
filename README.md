@@ -22,7 +22,7 @@ We may find the [Data Exploration file](https://github.com/lucasquemelli/COVID-1
 
 In this section, we performed the data exploration using SQLite. The skills used in this task were: Joins, CTE's, Subqueries, Temp Tables, Window Functions, Aggregate Functions, Views, and Converting/Casting Data Types.
 
-All data generated were used to create multiple views. All views were exported to csv files and may be found on [Views Folder](https://github.com/lucasquemelli/COVID-19_Data-Analysis/tree/main/Views). Since we used Tableau Public to create charts, we could not connect it to a database. Thus, we used these views to create charts on Tableau. 
+All data generated were used to create multiple views. All views were exported to csv files and may be found on [Views Folder](https://github.com/lucasquemelli/COVID-19_Data-Analysis/tree/main/Views). Since we used Tableau Public to create charts and we cannot connect it to a database, we used these csv files as datasource, on Tableau, to create charts. 
 
 # 3. Data Visualization 
 
