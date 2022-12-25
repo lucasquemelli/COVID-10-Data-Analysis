@@ -28,3 +28,5 @@ All data generated were used to create multiple views. All views were exported t
 
 # 3. Data Visualization 
 
+- Data type change.
+- Null treatment. 
