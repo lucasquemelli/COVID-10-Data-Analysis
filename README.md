@@ -33,3 +33,7 @@ We needed to treat the data before showing them out. The main treatments were:
 **1. Data type change:** We had to change data type of some columns that was string into numeric type. We made the change in the visualization window on Tableau, because in the datasource the rows could become null. We also converted location (string) into geographic field in order to create maps.
 
 **2. Null treatment:** The tables **(1) Death_per_NewCases** and **(2) Total_Deaths** had null values. To solve this problem, we created new calculated fields on Tableau and attributed 0 in case of null content.  
+
+We may see the final Covid-19 dashboard down here. Yet, if you wish to visualize it more interactively, you may click [here](https://public.tableau.com/app/profile/lucas.quemelli/viz/Covid-19Dashboard_16720056629290/Covid-19Dashboard?publish=yes).
+
+<code><img width="100%" src="https://user-images.githubusercontent.com/81119854/209482998-e05bcc9c-4d07-45a2-8ca2-82681ee686c2.png"></code>
