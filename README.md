@@ -28,7 +28,8 @@ All data generated were used to create multiple views. All views were exported t
 
 # 3. Data Visualization 
 
-- Data type change. We had to change data type of some columns that was string into numeric type. We made the change in the visualization window on Tableu, because in the datasource window if we tried to change the type some rows could become null.
+We needed to treat the data before showing them out. The main treatments were:
 
+**1. Data type change:** We had to change data type of some columns that was string into numeric type. We made the change in the visualization window on Tableau, because in the datasource the rows could become null.
 
-- Null treatment. 
+**2. Null treatment:** The tables **(1) Death_per_NewCases** and **(2) Total_Deaths** had null values. To solve this problem, we created new calculated fields on Tableau and attributed 0 in case of null content.  
