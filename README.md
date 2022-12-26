@@ -36,4 +36,4 @@ We needed to treat the data before showing them out. The main treatments were:
 
 We may see the final Covid-19 dashboard down here. Yet, if you wish to visualize it more interactively, you may click [here](https://public.tableau.com/app/profile/lucas.quemelli/viz/Covid-19Dashboard_16720056629290/Covid-19Dashboard?publish=yes).
 
-<code><img width="100%" src="https://user-images.githubusercontent.com/81119854/209482998-e05bcc9c-4d07-45a2-8ca2-82681ee686c2.png"></code>
+<code><img width="100%" src="https://user-images.githubusercontent.com/81119854/209557581-75ef79e1-3257-42a6-99d5-2749e324b177.png"></code>
